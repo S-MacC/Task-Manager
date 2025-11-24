@@ -1,5 +1,5 @@
 #include "Task.h"
-Task::Task(string name, string due, string desc, string progress, string user)
+Task::Task(string name, string due, string desc, string progress, string user)//constructor for tasks
 {
 string name = name;
 string due = due_date;
@@ -8,7 +8,7 @@ string progress = progress_status;
 string user = user;
 }
 
-Task::~Task(){
+Task::~Task(){//destructor for tasks
 
 std::cout << "Destructor for task called" <<std::endl;
 

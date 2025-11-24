@@ -11,5 +11,6 @@ class Task {
     public:// See user.h for the public section
     Task();
     Task(string name, string due, string desc, string progress, string user);
+    string getName(string name);
     ~Task();
 };
