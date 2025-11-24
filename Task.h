@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 using std::string;
 class Task {
     private:
@@ -9,6 +10,6 @@ class Task {
     string user;
     public:
     Task();
-    Task(string name, string due, string desc, string progress, string user;)
+    Task(string name, string due, string desc, string progress, string user);
     ~Task();
-}
+};
