@@ -10,16 +10,24 @@ class Task {
     string user; //The user associated with a task
     public:// See user.h for the public section
     Task();
-    Task(string name, string due, string desc, string progress, string user);
-    string getName(){return name;};
-    void setName(string name);
-    string setdescription(string description);
-    void getdesc(){string description;};
-    string getdate(string due_date);
-    void setdate(){string due_date;};
-    string getstatus(string progress_status);
-    void setName(){string progress_status;};
-    string getuser(string user);
-    void setName(){string user;};
-    ~Task();
+    Task(string names, string due, string desc, string progress, string user);
+    void NewTask(){
+        std::cout << "Enter Task Name: ";
+        getline(std::cin, name);
+        std::cout << "Enter Task Description: ";
+        getline(std::cin, description);
+        std::cout << "Enter Task Due Date: ";
+        getline(std::cin, due_date);
+        std::cout << "Enter Task Status: ";
+        getline(std::cin, progress_status);
+        std::cout << "Enter Task User: ";
+        getline(std::cin, user);
+        
+    }
+    void printDetails(){
+    std::cout <<"Task Name: " << description <<std::endl;
+    }
+
+    
+    ~Task(){};
 };

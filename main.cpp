@@ -3,6 +3,8 @@
 #include "Task.h"
 #include "User.h"
 using namespace std;
+Task::Task(){}
+
 int main(){
 int x = 5;
 cout <<"Welcome to the Task Manager!" <<endl;
@@ -28,9 +30,7 @@ switch(x){
     cout << "Please Choose a Valid User"<<endl;
     break;
 }
-if (User.number == 0){
-    
-})
+//checkuser();
 //Add Login Functionality Here
 cout <<"Select an option: 1 to view all tasks, 2 to add a task and 3 to view urgent tasks"<<endl;
 cin >> x ; 
@@ -48,6 +48,24 @@ switch(x){
     cout << "Please Choose a Valid option"<<endl;
     break;
 }
-    return 0;
+Task studentArray[2];
+if (x == 2){    for (int i = 0; i < 2; i++)
+    {
+        cout << "Enter details for task: " << endl;
+        studentArray[i].NewTask();
+    }
+}
+else if (x == 1){
+
+    cout << "You have entered : " << endl;
+    for (int i = 0; i < 2; i++)
+    {
+        studentArray[i].printDetails();
+    }
+//Create_Task();
+//Urgent();
+    
+}
+return 0;
 }
 //This is currently a test function

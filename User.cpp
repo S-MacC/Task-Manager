@@ -1,8 +1,9 @@
 #include "User.h"
-User::User(string name, string pass)// Constructor for user class
+User::User(string name, string pass, int number)// Constructor for user class
 {
 string name = name;//
 string pass = password;
+int number= number;
 
 }
 

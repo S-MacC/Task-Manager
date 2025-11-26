@@ -5,8 +5,9 @@ class User {
     private:
     string name;//Username
     string password;//Password
+    int number;
     public:
     User();
-    User(string name, string pass);
+    User(string name, string pass, int number);
     ~User();
 };
