@@ -32,39 +32,43 @@ switch(x){
 }
 //checkuser();
 //Add Login Functionality Here
-cout <<"Select an option: 1 to view all tasks, 2 to add a task and 3 to view urgent tasks"<<endl;
+Task studentArray[2];
+for(int i{}; i<1; ){
+cout <<"Select an option: 1 to view all tasks, 2 to add a task, 3 to view urgent tasks and 4 to exit"<<endl;
 cin >> x ; 
 switch(x){
     case 1:
     cout <<"View Current Tasks"<<endl;
+    for (int i = 0; i < 2; i++) //lets user input tasks
+    {
+        studentArray[i].printDetails();
+    }
     break;
     case 2:
     cout <<"Add Task"<<endl;
+    
+     {
+        cout << "Enter details for task: " << endl; //reads tasks
+        studentArray[1].NewTask();
+    }
     break;
     case 3:
     cout <<"View Urgent Tasks"<<endl;
     break;
+    case 4:
+    {
+    i=i+1;
+    }
+    break;
     default:
     cout << "Please Choose a Valid option"<<endl;
     break;
-}
-Task studentArray[2];
-if (x == 2){    for (int i = 0; i < 2; i++)
-    {
-        cout << "Enter details for task: " << endl;
-        studentArray[i].NewTask();
-    }
-}
-else if (x == 1){
 
-    cout << "You have entered : " << endl;
-    for (int i = 0; i < 2; i++)
-    {
-        studentArray[i].printDetails();
-    }
 //Create_Task();
 //Urgent();
-    
+
+
+}
 }
 return 0;
 }

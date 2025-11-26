@@ -25,7 +25,12 @@ class Task {
         
     }
     void printDetails(){
-    std::cout <<"Task Name: " << description <<std::endl;
+    std::cout <<"Task Name: " << name <<std::endl;
+    std::cout <<"Task Description: " << description <<std::endl;
+    std::cout <<"Task Due Date: " << due_date <<std::endl;
+    std::cout <<"Task Status: " << progress_status <<std::endl;
+    std::cout <<"Task User: " << user <<std::endl;
+    std::cout <<std::endl;
     }
 
     
