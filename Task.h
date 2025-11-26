@@ -12,5 +12,6 @@ class Task {
     Task();
     Task(string name, string due, string desc, string progress, string user);
     string getName(string name);
+    void setName(string name);
     ~Task();
 };
