@@ -11,7 +11,15 @@ class Task {
     public:// See user.h for the public section
     Task();
     Task(string name, string due, string desc, string progress, string user);
-    string getName(string name);
+    string getName(){return name;};
     void setName(string name);
+    string setdescription(string description);
+    void getdesc(){string description;};
+    string getdate(string due_date);
+    void setdate(){string due_date;};
+    string getstatus(string progress_status);
+    void setName(){string progress_status;};
+    string getuser(string user);
+    void setName(){string user;};
     ~Task();
 };
