@@ -3,10 +3,7 @@
 #include "Task.h"
 #include "User.h"
 using namespace std;
-Task::Task(){}
-
 int main(){
-int x = 5;
 cout <<"Welcome to the Task Manager!" <<endl;
 cout <<"Select an account:" <<endl;
 cin >> x ; 
@@ -30,26 +27,46 @@ switch(x){
     cout << "Please Choose a Valid User"<<endl;
     break;
 }
-//checkuser();
-//Add Login Functionality Here
-Task studentArray[2];
+  User emp[5]; 
+  Task foo[5];
+  int n, i;
+  cout << "Enter Number of Users - ";
+  cin >> n;
+    for(i = 0; i < n; i++) 
+    emp[i].getdata();
+  
+  cout << "User Data - " << endl;
+  
+  // Accessing the function
+  for(i = 0; i < n; i++) 
+    emp[i].putdata();
+
+
+
+
+
+
+
+
+
+
 for(int i{}; i<1; ){
+    int b{};
 cout <<"Select an option: 1 to view all tasks, 2 to add a task, 3 to view urgent tasks and 4 to exit"<<endl;
 cin >> x ; 
 switch(x){
     case 1:
-    cout <<"View Current Tasks"<<endl;
-    for (int i = 0; i < 2; i++) //lets user input tasks
-    {
-        studentArray[i].printDetails();
-    }
+  for(int j = 0; j < b; j++) 
+    foo[j].putdata();
+    
     break;
     case 2:
+    {
+        b++;
     cout <<"Add Task"<<endl;
-    
-     {
-        cout << "Enter details for task: " << endl; //reads tasks
-        studentArray[1].NewTask();
+     
+    foo[b].getdata();
+      
     }
     break;
     case 3:
@@ -63,13 +80,15 @@ switch(x){
     default:
     cout << "Please Choose a Valid option"<<endl;
     break;
+}
 
-//Create_Task();
 //Urgent();
 
 
+
 }
-}
+cout<< "Test";
 return 0;
+
 }
 //This is currently a test function

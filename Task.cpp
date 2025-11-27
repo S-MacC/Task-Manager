@@ -1,5 +1,5 @@
 #include "Task.h"
-Task::Task(string names, string due, string desc, string progress, string user)//constructor for tasks
+Task::Task(string name, string due, string desc, string progress, string user)//constructor for tasks
 {
 string name = name;
 string due = due_date;

@@ -1,6 +1,9 @@
 #include <string>
 #include <iostream>
 using std::string;
+using std::cin;
+using std::cout;
+using std::endl;
 class Task {
     private:
     string due_date; //task due date
@@ -9,30 +12,34 @@ class Task {
     string progress_status; // Is project started, in progress etc
     string user; //The user associated with a task
     public:// See user.h for the public section
-    Task();
-    Task(string names, string due, string desc, string progress, string user);
-    void NewTask(){
-        std::cout << "Enter Task Name: ";
-        getline(std::cin, name);
-        std::cout << "Enter Task Description: ";
-        getline(std::cin, description);
-        std::cout << "Enter Task Due Date: ";
-        getline(std::cin, due_date);
-        std::cout << "Enter Task Status: ";
-        getline(std::cin, progress_status);
-        std::cout << "Enter Task User: ";
-        getline(std::cin, user);
-        
-    }
-    void printDetails(){
-    std::cout <<"Task Name: " << name <<std::endl;
-    std::cout <<"Task Description: " << description <<std::endl;
-    std::cout <<"Task Due Date: " << due_date <<std::endl;
-    std::cout <<"Task Status: " << progress_status <<std::endl;
-    std::cout <<"Task User: " << user <<std::endl;
-    std::cout <<std::endl;
-    }
-
-    
-    ~Task(){};
+   // Declaration of function
+  void getdata();
+  
+  // Declaration of function
+  void putdata();
 };
+void Task::getdata()
+{ 
+  cout << "Enter task name : ";
+  cin >> name;
+  cout << "Enter task description : ";
+  cin >> description;
+    cout << "Enter task due date: ";
+  cin >> due_date;
+    cout << "Enter task status : ";
+  cin >> progress_status;
+    cout << "Enter task user : ";
+  cin >> user;
+}
+
+// Defining the function outside 
+// the class
+void Task::putdata()
+{
+  cout << name << " ";
+  cout << description << " ";
+  cout << due_date << " ";
+  cout << progress_status << " ";
+  cout << user << " ";
+  cout << endl;
+}
