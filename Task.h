@@ -18,28 +18,29 @@ class Task {
   // Declaration of function
   void putdata();
 };
-void Task::getdata()
+void Task::getdata()//input
 { 
   cout << "Enter task name : ";
-  cin >> name;
+  getline(cin,name);//the getline function is like cin but can accept multiple words
+  getline(cin,name);//It's used here for this reason(don't know why but the first getline here doesn't work)
   cout << "Enter task description : ";
-  cin >> description;
+  getline(cin,description);
     cout << "Enter task due date: ";
-  cin >> due_date;
+  getline(cin,due_date);
     cout << "Enter task status : ";
-  cin >> progress_status;
+  getline(cin,progress_status);
     cout << "Enter task user : ";
-  cin >> user;
+  getline(cin,user);
 }
 
 // Defining the function outside 
 // the class
-void Task::putdata()
+void Task::putdata()//output
 {
-  cout << name << " ";
-  cout << description << " ";
-  cout << due_date << " ";
-  cout << progress_status << " ";
-  cout << user << " ";
+  cout <<"Name: "<< name << " "<<endl;
+  cout <<"Description: "<< description << " "<<endl;
+  cout <<"Due: "<< due_date << " "<<endl;
+  cout <<"Status: "<< progress_status << " "<<endl;
+  cout << user << " "<<endl;
   cout << endl;
 }

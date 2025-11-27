@@ -3,6 +3,8 @@
 #include "Task.h"
 #include "User.h"
 using namespace std;
+
+int x{};
 int main(){
 cout <<"Welcome to the Task Manager!" <<endl;
 cout <<"Select an account:" <<endl;
@@ -30,16 +32,8 @@ switch(x){
   User emp[5]; 
   Task foo[5];
   int n, i;
-  cout << "Enter Number of Users - ";
-  cin >> n;
-    for(i = 0; i < n; i++) 
-    emp[i].getdata();
-  
-  cout << "User Data - " << endl;
-  
-  // Accessing the function
-  for(i = 0; i < n; i++) 
-    emp[i].putdata();
+    emp[x].getdata();//getting user account creation
+  //use this for login maybe
 
 
 
@@ -50,24 +44,25 @@ switch(x){
 
 
 
-for(int i{}; i<1; ){
-    int b{};
+
+for(int i{}; i<1; ){//looping the switch statement
+    int b{1};
 cout <<"Select an option: 1 to view all tasks, 2 to add a task, 3 to view urgent tasks and 4 to exit"<<endl;
 cin >> x ; 
 switch(x){
     case 1:
-  for(int j = 0; j < b; j++) 
+  for(int j = 0; j < 5; j++) 
     foo[j].putdata();
     
     break;
     case 2:
-    {
+    
         b++;
     cout <<"Add Task"<<endl;
      
-    foo[b].getdata();
+   
       
-    }
+    
     break;
     case 3:
     cout <<"View Urgent Tasks"<<endl;
@@ -81,7 +76,13 @@ switch(x){
     cout << "Please Choose a Valid option"<<endl;
     break;
 }
-
+if (x==1){
+       for(int q{};q<b;q++)
+    foo[1].putdata();
+}
+else if(x==2){
+  foo[1].getdata();  
+}
 //Urgent();
 
 
