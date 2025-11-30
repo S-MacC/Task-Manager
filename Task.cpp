@@ -6,6 +6,7 @@ string due = due_date;
 string desc = description;
 string progress = progress_status;
 string user = user;
+
 }
 
 Task::~Task(){//destructor for tasks

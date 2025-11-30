@@ -12,18 +12,19 @@ class User {
   
   // Declaration of function
   void putdata();
+  string getuser(){return username;};
 
 };
 void User::getdata()
 { 
-  std::cout << "Enter Id : ";
-  std::cin >> password;
-  std::cout << "Enter Name : ";
+  std::cout << "Enter name : ";
   std::cin >> username;
+  std::cout << "Enter password : ";
+  std::cin >> password;
 }
 void User::putdata()
 {
-  std::cout << password << " ";
   std::cout << username << " ";
+  std::cout << password << " ";
   std::cout << std::endl;
 }
