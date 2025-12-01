@@ -29,8 +29,13 @@ class Task {
   string getdue(){return due_date;};
   void setstatus(){getline(cin,progress_status);};
   string getstatus(){return progress_status;};
+<<<<<<< HEAD
+  void setcomplete();
+  
+=======
   
 
+>>>>>>> 09745efdbb4382126dd2b03939943862283b0c0a
 
 };
 void Task::getdata()//input
@@ -45,6 +50,10 @@ void Task::getdata()//input
   getline(cin,due_date);
     cout << "Enter task status : ";
   getline(cin,progress_status);
+<<<<<<< HEAD
+  
+=======
+>>>>>>> 09745efdbb4382126dd2b03939943862283b0c0a
 }
 
 // Defining the function outside 
