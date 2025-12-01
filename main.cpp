@@ -107,8 +107,17 @@ if (x==3){
       foo[num].setstatus();
       break;
       case 5:
-      cout <<"Current completedness is"<<foo[num].getstatus()<<". Please enter your new completednes"<<endl;
-      foo[num].setcomplete();
+      cout <<"Are you sure you want to mark "<<foo[num].getstatus()<<"as complete. Doing so will delete all instances of this task"<<endl;
+      int sure{};
+      cin>>sure;
+        if (sure==1)
+        {
+        
+        }
+        else
+        {
+          cout<<"Your task was not deleted"<<endl;
+        }
       
     }
   }
