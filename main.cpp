@@ -37,16 +37,6 @@ cin >> x ;
     //need to add a way to check if account exists
   //use this for login maybe
 
-
-
-
-
-
-
-
-
-
-
 for(int i{}; i<1; ){//looping the switch statement
   cout <<"Select an option: 1 to view all tasks, 2 to add a task, 3 to edit tasks and 4 to exit"<<endl;
   cin >> x ; 
@@ -70,14 +60,14 @@ for(int i{}; i<1; ){//looping the switch statement
     }
 
   if (x==1){//view tasks(function can be found in task.h)
-    for(int q{1};q<=b;q++)
+    for(int q{1};q<=b;q++){
+    cout<<"Number: "<<q;
     foo[q].putdata();
+    }
   }
   else if(x==2){//add tasks(function can be found in task.h)
   b++;
   foo[b].getdata(); 
-  foo[b].setnumber(b);
-  foo[b].getnumber();
   }
 //Urgent();
 
@@ -94,7 +84,7 @@ if (x==3){
     cout <<"2. Description"<<endl;
     cout <<"3. Due date"<<endl;
     cout <<"4. Status"<<endl;
-    cout<<"Mark as complete"<<endl;
+    cout <<"5. Mark as complete"<<endl;
     cin>>choice;
     switch(choice){
       case 1:
