@@ -31,7 +31,7 @@ class Task {
   void setstatus(){getline(cin,progress_status);};
   string getstatus(){return progress_status;};
   void setcomplete();
-  ~Task();
+  
 
 };
 void Task::getdata()//input
@@ -46,10 +46,7 @@ void Task::getdata()//input
   getline(cin,due_date);
     cout << "Enter task status : ";
   getline(cin,progress_status);
-  cout << "Enter task completion, true or false : ";
-  cin>>std::boolalpha;
-  cin>>in;
-  complete=in;
+  
 }
 
 // Defining the function outside 
@@ -64,13 +61,4 @@ void Task::putdata()//output
   cout <<"Completed: "<< complete << " "<<endl;
   cout << endl;
 }
-void Task::setcomplete(){
-  bool in;
-  cin>>std::boolalpha;
-  cin>>in;
-  complete=in;
-}
-void Task::getdata(){
-  if(complete==true);
 
-}

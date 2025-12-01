@@ -114,16 +114,12 @@ if (x==3){
       getline(cin,input);
       foo[num].setstatus();
       break;
-      case 5:
-      cout <<"Current completedness is"<<foo[num].getstatus()<<". Please enter your new completednes"<<endl;
-      foo[num].setcomplete();
+
       
     }
   }
 }
-    for(int q{1};q<=b;q++){
-    foo[q].putdata();
-    }
+
 
 return 0;
   
