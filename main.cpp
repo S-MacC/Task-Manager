@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 #include "Task.h"
 #include "User.h"
 using namespace std;
@@ -93,6 +94,7 @@ if (x==3){
     cout <<"2. Description"<<endl;
     cout <<"3. Due date"<<endl;
     cout <<"4. Status"<<endl;
+    cout<<"Mark as complete"<<endl;
     cin>>choice;
     switch(choice){
       case 1:
@@ -115,15 +117,24 @@ if (x==3){
       foo[num].setstatus();
       break;
       case 5:
-      cout <<"Current completedness is"<<foo[num].getstatus()<<". Please enter your new completednes"<<endl;
-      foo[num].setcomplete();
+      int tf;
+      cout <<"Are you sure you want to mark "<<foo[num].getstatus()<<" as complete. This will delete the task[y/n]"<<endl;
+      cin >>tf;
+      if (tf==1){
+
+
+      
+
+      std::copy(foo+choice+1, foo+10000, foo+choice);
+
+
+      }
+      else{cout<<"Task wasn't deleted"<<endl;};
       
     }
   }
 }
-    for(int q{1};q<=b;q++){
-    foo[q].putdata();
-    }
+
 
 return 0;
   
