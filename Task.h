@@ -13,7 +13,6 @@ class Task {
     string name; //Name given to tasks
     string progress_status; // Is project started, in progress etc
     string user; //The user associated with a task
-    bool complete;
     public:// See user.h for the public section
    // Declaration of function
   void getdata();
@@ -30,8 +29,13 @@ class Task {
   string getdue(){return due_date;};
   void setstatus(){getline(cin,progress_status);};
   string getstatus(){return progress_status;};
+<<<<<<< HEAD
   void setcomplete();
   
+=======
+  
+
+>>>>>>> 09745efdbb4382126dd2b03939943862283b0c0a
 
 };
 void Task::getdata()//input
@@ -46,7 +50,10 @@ void Task::getdata()//input
   getline(cin,due_date);
     cout << "Enter task status : ";
   getline(cin,progress_status);
+<<<<<<< HEAD
   
+=======
+>>>>>>> 09745efdbb4382126dd2b03939943862283b0c0a
 }
 
 // Defining the function outside 
@@ -58,7 +65,7 @@ void Task::putdata()//output
   cout <<"Description: "<< description << " "<<endl;
   cout <<"Due: "<< due_date << " "<<endl;
   cout <<"Status: "<< progress_status << " "<<endl;
-  cout <<"Completed: "<< complete << " "<<endl;
+  
   cout << endl;
 }
 
