@@ -34,7 +34,7 @@ class Task {
 };
 void Task::getdata()//input
 { 
-  bool in;
+
   cout << "Enter task name : ";
   getline(cin,name);//the getline function is like cin but can accept multiple words
   getline(cin,name);//It's used here for this reason(don't know why but the first getline here doesn't work)
@@ -48,24 +48,4 @@ void Task::getdata()//input
 
 // Defining the function outside 
 // the class
-void Task::putdata()//output
-{
-  cout <<"Name: "<< name << " "<<endl;
-  cout <<"Description: "<< description << " "<<endl;
-  cout <<"Due: "<< due_date << " "<<endl;
-  cout <<"Status: "<< progress_status << " "<<endl;
-  
-  cout << endl;
-  
-}
-
-void Task::markcomplete()
-{
-  name.clear();
-  description.clear();
-  due_date.clear();
-  progress_status.clear();
-  user.clear();
-
-}
 
