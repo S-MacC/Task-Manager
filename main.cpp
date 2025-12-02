@@ -6,11 +6,13 @@
 using namespace std;
 int b{};
 int x{};
+int usernum{};
+extern string store_user;
 int main(){
 cout <<"Welcome to the Task Manager!" <<endl;
 cout <<"Select an account-enter a number 1-5:" <<endl;//This needs to be revised
-cin >> x ; 
-  switch(x){//user selection
+cin >> usernum ; 
+  switch(usernum){//user selection
     case 1:
     cout <<"User 1 selected"<<endl;
     break;
@@ -30,13 +32,14 @@ cin >> x ;
     cout << "Please Choose a Valid User"<<endl;
     break;
   }
+  
     User emp[5]; //array of users
     Task foo[10000];//array of tasks
     int n, i;
     emp[x].getdata();//getting user account creation
     //need to add a way to check if account exists
   //use this for login maybe
-
+  string store_user = emp[usernum].getuser();
 for(int i{}; i<1; ){//looping the switch statement
   cout <<"Select an option: 1 to view all tasks, 2 to add a task, 3 to edit tasks and 4 to exit"<<endl;
   cin >> x ; 
@@ -74,7 +77,7 @@ for(int i{}; i<1; ){//looping the switch statement
 
 if (x==3){
    int num{};
-   int choice;
+   int choice{};
     string input;
     cout <<"Edit Tasks"<<endl;//no functionality. Will change to edit tasks
     cout <<"Enter a number"<<endl;//using numbers as a referencing tool
@@ -112,7 +115,16 @@ if (x==3){
       cin>>sure;
         if (sure==1)
         {
-        
+          foo[num].markcomplete();
+          {
+            for(int i{num};i<b;i++)
+            {
+            swap(foo[i],foo[i+1]);
+            
+            
+            }
+            b--;
+          }
         }
         else
         {

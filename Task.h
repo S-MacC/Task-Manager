@@ -1,4 +1,5 @@
 #include <string>
+#include <cstring>
 #include <iostream>
 using std::string;
 using std::cin;
@@ -7,7 +8,6 @@ using std::endl;
 
 class Task {
     private:
-    int number;
     string due_date; //task due date
     string description; //small description of tasks
     string name; //Name given to tasks
@@ -16,11 +16,9 @@ class Task {
     public:// See user.h for the public section
    // Declaration of function
   void getdata();
-  void checkcomp();
+  void markcomplete();
   // Declaration of function
   void putdata();
-  void setnumber(int b){b=number;};
-  int getnumber(){return number;};
   void setname(){getline(cin,name);getline(cin,name);};
   string getname(){return name;};
   void setdescription(){getline(cin,description);};
@@ -29,13 +27,9 @@ class Task {
   string getdue(){return due_date;};
   void setstatus(){getline(cin,progress_status);};
   string getstatus(){return progress_status;};
-<<<<<<< HEAD
-  void setcomplete();
-  
-=======
+  string getuser(){return user;};
   
 
->>>>>>> 09745efdbb4382126dd2b03939943862283b0c0a
 
 };
 void Task::getdata()//input
@@ -50,22 +44,28 @@ void Task::getdata()//input
   getline(cin,due_date);
     cout << "Enter task status : ";
   getline(cin,progress_status);
-<<<<<<< HEAD
-  
-=======
->>>>>>> 09745efdbb4382126dd2b03939943862283b0c0a
 }
 
 // Defining the function outside 
 // the class
 void Task::putdata()//output
 {
-  cout <<"Number: "<<number<<endl;
   cout <<"Name: "<< name << " "<<endl;
   cout <<"Description: "<< description << " "<<endl;
   cout <<"Due: "<< due_date << " "<<endl;
   cout <<"Status: "<< progress_status << " "<<endl;
   
   cout << endl;
+  
+}
+
+void Task::markcomplete()
+{
+  name.clear();
+  description.clear();
+  due_date.clear();
+  progress_status.clear();
+  user.clear();
+
 }
 
