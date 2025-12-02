@@ -4,7 +4,7 @@
 #include "Task.h"
 #include "User.h"
 using namespace std;
-int b{};
+int total{};
 int x{};
 int usernum{};
 extern string store_user;
@@ -33,13 +33,13 @@ cin >> usernum ;
     break;
   }
   
-    User emp[5]; //array of users
-    Task foo[10000];//array of tasks
+    User user[5]; //array of users
+    Task task[10000];//array of tasks
     int n, i;
-    emp[x].getdata();//getting user account creation
+    user[x].getdata();//getting user account creation
     //need to add a way to check if account exists
   //use this for login maybe
-  string store_user = emp[usernum].getuser();
+  string store_user = user[usernum].getuser();
 for(int i{}; i<1; ){//looping the switch statement
   cout <<"Select an option: 1 to view all tasks, 2 to add a task, 3 to edit tasks and 4 to exit"<<endl;
   cin >> x ; 
@@ -63,14 +63,14 @@ for(int i{}; i<1; ){//looping the switch statement
     }
 
   if (x==1){//view tasks(function can be found in task.h)
-    for(int q{1};q<=b;q++){
-    cout<<"Number: "<<q;
-    foo[q].putdata();
+    for(int i{1};i<=total;i++){
+    cout<<"Number: "<<i<<endl;
+    task[i].putdata();
     }
   }
   else if(x==2){//add tasks(function can be found in task.h)
-  b++;
-  foo[b].getdata(); 
+  total++;
+  task[total].getdata(); 
   }
 //Urgent();
 
@@ -91,39 +91,39 @@ if (x==3){
     cin>>choice;
     switch(choice){
       case 1:
-      cout <<"Current name is"<<foo[num].getname()<<". Please enter your new name"<<endl;
-      foo[num].setname();
+      cout <<"Current name is"<<task[num].getname()<<". Please enter your new name"<<endl;
+      task[num].setname();
       break;
       case 2:
-      cout <<"Current description is"<<foo[num].getdescription()<<". Please enter your new description"<<endl;
+      cout <<"Current description is"<<task[num].getdescription()<<". Please enter your new description"<<endl;
       getline(cin,input);
-      foo[num].setdescription();
+      task[num].setdescription();
       break;
       case 3:
-      cout <<"Current due date is"<<foo[num].getdue()<<". Please enter your new duedate"<<endl;
+      cout <<"Current due date is"<<task[num].getdue()<<". Please enter your new duedate"<<endl;
       getline(cin,input);
-      foo[num].setdue();
+      task[num].setdue();
       break;
       case 4:
-      cout <<"Current status is"<<foo[num].getstatus()<<". Please enter your new status"<<endl;
+      cout <<"Current status is"<<task[num].getstatus()<<". Please enter your new status"<<endl;
       getline(cin,input);
-      foo[num].setstatus();
+      task[num].setstatus();
       break;
       case 5:
-      cout <<"Are you sure you want to mark "<<foo[num].getstatus()<<"as complete. Doing so will delete all instances of this task"<<endl;
+      cout <<"Are you sure you want to mark "<<task[num].getstatus()<<" as complete. Doing so will delete all instances of this task"<<endl;
       int sure{};
       cin>>sure;
         if (sure==1)
         {
-          foo[num].markcomplete();
+          task[num].markcomplete();
           {
-            for(int i{num};i<b;i++)
+            for(int i{num};i<total;i++)
             {
-            swap(foo[i],foo[i+1]);
+            swap(task[i],task[i+1]);
             
             
             }
-            b--;
+            total--;
           }
         }
         else
@@ -134,9 +134,7 @@ if (x==3){
     }
   }
 }
-    for(int q{1};q<=b;q++){
-    foo[q].putdata();
-    }
+
 
 return 0;
   
