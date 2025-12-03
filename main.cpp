@@ -133,12 +133,13 @@ for(int i{}; i<1; ){//looping the switch statement
 
   if (x==1){//view tasks(function can be found in task.h)
     for(int i{1};i<=total-1;i++){
-      //  if(task[i].getuser()==store_user){
+    if(task[i].getuser()==store_user){
     cout<<"Number: "<<i<<endl;
     task[i].putdata();
         
     }
   }
+}
   else if(x==2){//add tasks(function can be found in task.h)
   
   task[total].getdata();
