@@ -13,6 +13,10 @@ class User {
   // Declaration of function
   void putdata();
   string getuser(){return username;};
+    string getpassword(){return password;};
+
+    void setpassword(const string &p){password=p;};
+    void setuser(const string &u){username=u;}
 
 };
 void User::getdata()

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <fstream>
 #include "Task.h"
 #include "User.h"
 #include <windows.h>
@@ -11,110 +12,105 @@ using namespace std;
 int total{};
 int x{};
 int usernum{};
+User user[6]; //array of users
+Task task[10000];//array of tasks
+User test;
+ofstream otaskfile;
+ofstream ouserfile;
 extern string store_user;
-
-size_t get_longest_text(const std::vector<std::string>& lines)
-{
-    size_t ret = 0;
-    for (auto& line : lines)
-    {
-        if (line.size() > ret)
-        {
-            ret = line.size();
-        }
-    }
-    return ret;
-}
-
-void print_border_top_or_bottom_line(size_t longest_text)
-{
-    for (size_t i = 0; i < longest_text + 4; ++i)
-    {
-        std::cout << "*";
-    }
-    std::cout << "\n";
-}
-
-void print_second_top_or_second_bottom_line(size_t longest_text)
-{
-    std::cout << "*";
-    for (size_t i = 0; i < longest_text + 2; ++i)
-    {
-        std::cout << " ";
-    }
-    std::cout << "*";
-    std::cout << "\n";
-}
-
-void print_line(const std::string& text, size_t longest_text)
-{
-    std::cout << "*";
-    std::cout << " ";
-    std::cout << text;
-    std::cout << std::string(longest_text + 1 - text.size(), ' ');
-    std::cout << "*";
-    std::cout << "\n";
-}
-
-void print_lines_with_border(const std::vector<std::string>& lines)
-{
-    size_t longest_text = get_longest_text(lines);
-    print_border_top_or_bottom_line(longest_text);
-    print_second_top_or_second_bottom_line(longest_text);
-    for (auto& line : lines)
-    {
-        print_line(line, longest_text);
-    }
-    print_second_top_or_second_bottom_line(longest_text);
-    print_border_top_or_bottom_line(longest_text);
-}
-
-
-
 int main(){
-  string name;
-  cout << "Enter your name: "<<endl;
-  cin>> name;
-
-  HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(h,4);
-    std::vector<std::string> lines{name};
-    print_lines_with_border(lines);
-    cout << "\n";
-    SetConsoleTextAttribute(h,2);
-    print_lines_with_border(lines);
-cout <<underline<<"Welcome to the Task Manager!" <<endl;
-    SetConsoleTextAttribute(h,2);
+cout <<"Welcome to the Task Manager!" <<endl;
 cout <<"Select an account-enter a number 1-5:" <<endl;//This needs to be revised
+ifstream iuserfile;
+iuserfile.open("u.txt",ios::app);
+    if(iuserfile.is_open())
+    {
+        string line;
+        int cnt2{};
+        while(getline(iuserfile, line))
+        {
+            
+        if(cnt2==0){
+            user[cntr].setuser(line);
+            cnt2++;
+        }
+        else{
+            user[cntr].setpassword(line);
+            cnt2=0;
+            cntr++;  
+        }   
+        
+        }
+      
+      iuserfile.close();
+    }
+    for(int i{1};i<6;i++){
+      cout<<i<<user[i].getuser()<<endl;;
+    }
+    ifstream itaskfile;
+itaskfile.open("t.txt",ios::app);
+    if(itaskfile.is_open())
+    {
+        cntr==0;
+        string line;
+        int cnt2{};
+        while(getline(itaskfile, line))
+        {
+            
+        if(cnt2==0){
+            total++;
+            task[total].setname(line);
+            cnt2++;
+        }
+        else if(cnt2==1){
+            task[total].setdescription(line);
+            cnt2++; 
+        }   
+        else if(cnt2==2){
+        task[total].setdue(line);
+        cnt2++; 
+        } 
+        else if(cnt2==3){
+        task[total].setstatus(line);
+        cnt2++; 
+        } 
+        else if(cnt2==4){
+        task[total].setuser(line);
+        cnt2=0; 
+        } 
+        }
+      
+      itaskfile.close();
+    }
+
 cin >> usernum ; 
-  switch(usernum){//user selection
-    case 1:
-    cout <<"User 1 selected"<<endl;
-    break;
-    case 2:
-    cout <<"User 2 selected"<<endl;
-    break;
-    case 3:
-    cout <<"User 3 selected"<<endl;
-    break;
-    case 4:
-    cout <<"User 4 selected"<<endl;
-    break;
-    case 5:
-    cout <<"User 5 selected"<<endl;
-    break;
-    default:
-    cout << "Please Choose a Valid User"<<endl;
-    break;
+  
+  for (int i{};i<1;){
+   string temp = user[usernum].getuser();
+   if(temp.empty())
+   {
+    cout<<"Please create user";
+    user[usernum].getdata();
+  
+  }
+  else if(!temp.empty())
+  {
+    cout<<"Logging in "<<user[usernum].getuser()<<"Enter password";
+    string password;
+    string temppass=user[usernum].getpassword();
+    cin >>password;
+    if(password==temppass){i++;}
+    else{cout<<"Wrong Password";}
+  }
   }
   
-    User user[5]; //array of users
-    Task task[10000];//array of tasks
+    
     int n, i;
-    user[x].getdata();//getting user account creation
+    //getting user account creation
     //need to add a way to check if account exists
   //use this for login maybe
   string store_user = user[usernum].getuser();
+  user[usernum].putdata();
 for(int i{}; i<1; ){//looping the switch statement
   cout <<"Select an option: 1 to view all tasks, 2 to add a task, 3 to edit tasks and 4 to exit"<<endl;
   cin >> x ; 
@@ -138,14 +134,39 @@ for(int i{}; i<1; ){//looping the switch statement
     }
 
   if (x==1){//view tasks(function can be found in task.h)
-    for(int i{1};i<=total;i++){
+    for(int i{1};i<=total-1;i++){
+    if(task[i].getuser()==store_user){
     cout<<"Number: "<<i<<endl;
     task[i].putdata();
+        
     }
   }
+}
   else if(x==2){//add tasks(function can be found in task.h)
+  
+  task[total].getdata();
+  string name = user[usernum].getuser();
+  task[total].setuser(name);
+  for(int i{1};i<=total;i++)
+  {
+otaskfile.open("t.txt",ios::app);
+if(otaskfile.is_open())
+    {
+    otaskfile<<task[i].getname()<<""<<endl;
+    otaskfile<< task[i].getdescription()<<""<<endl;
+    otaskfile<< task[i].getdue()<<""<<endl;
+    otaskfile<<task[i].getstatus() << "" <<endl;
+    otaskfile<<user[i].getuser()<<""<<endl;
+    otaskfile.close();
+    }
+  
+    else
+    {
+      cout<< "bad"<<endl;
+    }
+  }
   total++;
-  task[total].getdata(); 
+  
   }
 //Urgent();
 
@@ -167,22 +188,96 @@ if (x==3){
     switch(choice){
       case 1:
       cout <<"Current name is"<<task[num].getname()<<". Please enter your new name"<<endl;
-      task[num].setname();
+      getline(cin,input);
+      getline(cin,input);
+      task[num].setname(input);
+      remove("t.txt");
+      for(int i{1};i<=total;i++)
+      {
+      otaskfile.open("t.txt",ios::app);
+      if(otaskfile.is_open())
+        {
+        otaskfile<<task[i].getname()<<""<<endl;
+        otaskfile<< task[i].getdescription()<<""<<endl;
+        otaskfile<< task[i].getdue()<<""<<endl;
+        otaskfile<<task[i].getstatus() << "" <<endl;
+        otaskfile<<user[i].getuser()<<""<<endl;
+        otaskfile.close();
+        }
+        else
+        {
+        cout<< "bad"<<endl;
+        }
+      }
       break;
       case 2:
       cout <<"Current description is"<<task[num].getdescription()<<". Please enter your new description"<<endl;
       getline(cin,input);
-      task[num].setdescription();
+      task[num].setdescription(input);
+            remove("t.txt");
+      for(int i{1};i<=total;i++)
+      {
+      otaskfile.open("t.txt",ios::app);
+      if(otaskfile.is_open())
+        {
+        otaskfile<<task[i].getname()<<""<<endl;
+        otaskfile<< task[i].getdescription()<<""<<endl;
+        otaskfile<< task[i].getdue()<<""<<endl;
+        otaskfile<<task[i].getstatus() << "" <<endl;
+        otaskfile<<user[i].getuser()<<""<<endl;
+        otaskfile.close();
+        }
+        else
+        {
+        cout<< "bad"<<endl;
+        }
+      }
       break;
       case 3:
       cout <<"Current due date is"<<task[num].getdue()<<". Please enter your new duedate"<<endl;
       getline(cin,input);
-      task[num].setdue();
+      task[num].setdue(input);
+            remove("t.txt");
+      for(int i{1};i<=total;i++)
+      {
+      otaskfile.open("t.txt",ios::app);
+      if(otaskfile.is_open())
+        {
+        otaskfile<<task[i].getname()<<""<<endl;
+        otaskfile<< task[i].getdescription()<<""<<endl;
+        otaskfile<< task[i].getdue()<<""<<endl;
+        otaskfile<<task[i].getstatus() << "" <<endl;
+        otaskfile<<user[i].getuser()<<""<<endl;
+        otaskfile.close();
+        }
+        else
+        {
+        cout<< "bad"<<endl;
+        }
+      }
       break;
       case 4:
       cout <<"Current status is"<<task[num].getstatus()<<". Please enter your new status"<<endl;
       getline(cin,input);
-      task[num].setstatus();
+      task[num].setstatus(input);
+            remove("t.txt");
+      for(int i{1};i<=total;i++)
+      {
+      otaskfile.open("t.txt",ios::app);
+      if(otaskfile.is_open())
+        {
+        otaskfile<<task[i].getname()<<""<<endl;
+        otaskfile<< task[i].getdescription()<<""<<endl;
+        otaskfile<< task[i].getdue()<<""<<endl;
+        otaskfile<<task[i].getstatus() << "" <<endl;
+        otaskfile<<user[i].getuser()<<""<<endl;
+        otaskfile.close();
+        }
+        else
+        {
+        cout<< "bad"<<endl;
+        }
+      }
       break;
       case 5:
       cout <<"Are you sure you want to mark "<<task[num].getstatus()<<" as complete. Doing so will delete all instances of this task"<<endl;
@@ -199,6 +294,24 @@ if (x==3){
             
             }
             total--;
+                  remove("t.txt");
+      for(int i{1};i<=total;i++)
+      {
+      otaskfile.open("t.txt",ios::app);
+      if(otaskfile.is_open())
+        {
+        otaskfile<<task[i].getname()<<""<<endl;
+        otaskfile<< task[i].getdescription()<<""<<endl;
+        otaskfile<< task[i].getdue()<<""<<endl;
+        otaskfile<<task[i].getstatus() << "" <<endl;
+        otaskfile<<user[i].getuser()<<""<<endl;
+        otaskfile.close();
+        }
+        else
+        {
+        cout<< "bad"<<endl;
+        }
+      }
           }
         }
         else
@@ -210,8 +323,48 @@ if (x==3){
   }
 }
 
+      remove("t.txt");
+      for(int i{1};i<=total;i++)
+      {
+      otaskfile.open("t.txt",ios::app);
+      if(otaskfile.is_open())
+        {
+        otaskfile<<task[i].getname()<<""<<endl;
+        otaskfile<< task[i].getdescription()<<""<<endl;
+        otaskfile<< task[i].getdue()<<""<<endl;
+        otaskfile<<task[i].getstatus() << "" <<endl;
+        otaskfile<<user[i].getuser()<<""<<endl;
+        otaskfile.close();
+        }
+        else
+        {
+        cout<< "bad"<<endl;
+        }
+      }
 
 return 0;
   
 }
 //This is currently a test function
+void save()
+{
+remove("t.txt");
+for(int i{1};i<=total;i++)
+  {
+otaskfile.open("t.txt",ios::app);
+if(otaskfile.is_open())
+    {
+ otaskfile<<task[i].getname()<<""<<endl;
+ otaskfile<< task[i].getdescription()<<""<<endl;
+ otaskfile<< task[i].getdue()<<""<<endl;
+ otaskfile<<task[i].getstatus() << "" <<endl;
+ otaskfile<<user[i].getuser()<<""<<endl;
+otaskfile.close();
+    }
+  
+    else
+    {
+      cout<< "bad"<<endl;
+    }
+  }
+}
