@@ -81,7 +81,7 @@ itaskfile.open("t.txt",ios::app);
       itaskfile.close();
     }
 
-cin >> usernum ; 
+  cin >> usernum ; 
   
   for (int i{};i<1;){
    string temp = user[usernum].getuser();
@@ -93,12 +93,28 @@ cin >> usernum ;
   }
   else if(!temp.empty())
   {
-    cout<<"Logging in "<<user[usernum].getuser()<<"Enter password";
+    cout<<"Logging in "<<user[usernum].getuser()<<" Enter password"<<endl;
     string password;
     string temppass=user[usernum].getpassword();
     cin >>password;
     if(password==temppass){i++;}
-    else{cout<<"Wrong Password";}
+    else{cout<<"Wrong Password"<<endl;}
+  }
+  remove("u.txt");
+  for(int i{1};i<=6;i++)
+  {
+  ouserfile.open("u.txt",ios::app);
+  if(ouserfile.is_open())
+    {
+    ouserfile<<user[i].getuser()<<""<<endl;
+    ouserfile<< user[i].getpassword()<<""<<endl;
+    ouserfile.close();
+    }
+  
+    else
+    {
+      cout<< "bad"<<endl;
+    }
   }
   }
   
@@ -132,7 +148,7 @@ for(int i{}; i<1; ){//looping the switch statement
     }
 
   if (x==1){//view tasks(function can be found in task.h)
-    for(int i{1};i<=total-1;i++){
+    for(int i{};i<=total-1;i++){
     if(task[i].getuser()==store_user){
     cout<<"Number: "<<i<<endl;
     task[i].putdata();
@@ -145,16 +161,14 @@ for(int i{}; i<1; ){//looping the switch statement
   task[total].getdata();
   string name = user[usernum].getuser();
   task[total].setuser(name);
-  for(int i{1};i<=total;i++)
-  {
-otaskfile.open("t.txt",ios::app);
-if(otaskfile.is_open())
+  otaskfile.open("t.txt",ios::app);
+  if(otaskfile.is_open())
     {
-    otaskfile<<task[i].getname()<<""<<endl;
-    otaskfile<< task[i].getdescription()<<""<<endl;
-    otaskfile<< task[i].getdue()<<""<<endl;
-    otaskfile<<task[i].getstatus() << "" <<endl;
-    otaskfile<<user[i].getuser()<<""<<endl;
+    otaskfile<<task[total].getname()<<""<<endl;
+    otaskfile<< task[total].getdescription()<<""<<endl;
+    otaskfile<< task[total].getdue()<<""<<endl;
+    otaskfile<<task[total].getstatus() << "" <<endl;
+    otaskfile<<task[total].getuser()<<""<<endl;
     otaskfile.close();
     }
   
@@ -162,7 +176,7 @@ if(otaskfile.is_open())
     {
       cout<< "bad"<<endl;
     }
-  }
+  
   total++;
   
   }
@@ -195,11 +209,12 @@ if (x==3){
       otaskfile.open("t.txt",ios::app);
       if(otaskfile.is_open())
         {
-        otaskfile<<task[i].getname()<<""<<endl;
-        otaskfile<< task[i].getdescription()<<""<<endl;
-        otaskfile<< task[i].getdue()<<""<<endl;
-        otaskfile<<task[i].getstatus() << "" <<endl;
-        otaskfile<<user[i].getuser()<<""<<endl;
+        otaskfile<<task[total].getname()<<""<<endl;
+        otaskfile<< task[total].getdescription()<<""<<endl;
+        otaskfile<< task[total].getdue()<<""<<endl;
+        otaskfile<<task[total].getstatus() << "" <<endl;
+        otaskfile<<task[total].getuser()<<""<<endl;
+        otaskfile.close();
         otaskfile.close();
         }
         else
@@ -218,11 +233,11 @@ if (x==3){
       otaskfile.open("t.txt",ios::app);
       if(otaskfile.is_open())
         {
-        otaskfile<<task[i].getname()<<""<<endl;
-        otaskfile<< task[i].getdescription()<<""<<endl;
-        otaskfile<< task[i].getdue()<<""<<endl;
-        otaskfile<<task[i].getstatus() << "" <<endl;
-        otaskfile<<user[i].getuser()<<""<<endl;
+        otaskfile<<task[total].getname()<<""<<endl;
+        otaskfile<< task[total].getdescription()<<""<<endl;
+        otaskfile<< task[total].getdue()<<""<<endl;
+        otaskfile<<task[total].getstatus() << "" <<endl;
+        otaskfile<<task[total].getuser()<<""<<endl;
         otaskfile.close();
         }
         else
@@ -232,7 +247,7 @@ if (x==3){
       }
       break;
       case 3:
-      cout <<"Current due date is"<<task[num].getdue()<<". Please enter your new duedate"<<endl;
+      cout <<"Current due date is"<<task[num].getdue()<<". Please enter your new due date"<<endl;
       getline(cin,input);
       task[num].setdue(input);
             remove("t.txt");
@@ -241,11 +256,11 @@ if (x==3){
       otaskfile.open("t.txt",ios::app);
       if(otaskfile.is_open())
         {
-        otaskfile<<task[i].getname()<<""<<endl;
-        otaskfile<< task[i].getdescription()<<""<<endl;
-        otaskfile<< task[i].getdue()<<""<<endl;
-        otaskfile<<task[i].getstatus() << "" <<endl;
-        otaskfile<<user[i].getuser()<<""<<endl;
+        otaskfile<<task[total].getname()<<""<<endl;
+        otaskfile<< task[total].getdescription()<<""<<endl;
+        otaskfile<< task[total].getdue()<<""<<endl;
+        otaskfile<<task[total].getstatus() << "" <<endl;
+        otaskfile<<task[total].getuser()<<""<<endl;
         otaskfile.close();
         }
         else
@@ -264,11 +279,11 @@ if (x==3){
       otaskfile.open("t.txt",ios::app);
       if(otaskfile.is_open())
         {
-        otaskfile<<task[i].getname()<<""<<endl;
-        otaskfile<< task[i].getdescription()<<""<<endl;
-        otaskfile<< task[i].getdue()<<""<<endl;
-        otaskfile<<task[i].getstatus() << "" <<endl;
-        otaskfile<<user[i].getuser()<<""<<endl;
+        otaskfile<<task[total].getname()<<""<<endl;
+        otaskfile<< task[total].getdescription()<<""<<endl;
+        otaskfile<< task[total].getdue()<<""<<endl;
+        otaskfile<<task[total].getstatus() << "" <<endl;
+        otaskfile<<task[total].getuser()<<""<<endl;
         otaskfile.close();
         }
         else
@@ -278,10 +293,10 @@ if (x==3){
       }
       break;
       case 5:
-      cout <<"Are you sure you want to mark "<<task[num].getstatus()<<" as complete. Doing so will delete all instances of this task"<<endl;
-      int sure{};
+      cout <<"Are you sure you want to mark "<<task[num].getstatus()<<" as complete. Doing so will delete all instances of this task[y/n]"<<endl;
+      string sure{};
       cin>>sure;
-        if (sure==1)
+        if (sure=="y"||sure=="Y")
         {
           task[num].markcomplete();
           {
@@ -298,11 +313,11 @@ if (x==3){
       otaskfile.open("t.txt",ios::app);
       if(otaskfile.is_open())
         {
-        otaskfile<<task[i].getname()<<""<<endl;
-        otaskfile<< task[i].getdescription()<<""<<endl;
-        otaskfile<< task[i].getdue()<<""<<endl;
-        otaskfile<<task[i].getstatus() << "" <<endl;
-        otaskfile<<user[i].getuser()<<""<<endl;
+        otaskfile<<task[total].getname()<<""<<endl;
+        otaskfile<< task[total].getdescription()<<""<<endl;
+        otaskfile<< task[total].getdue()<<""<<endl;
+        otaskfile<<task[total].getstatus() << "" <<endl;
+        otaskfile<<task[total].getuser()<<""<<endl;
         otaskfile.close();
         }
         else
@@ -327,11 +342,11 @@ if (x==3){
       otaskfile.open("t.txt",ios::app);
       if(otaskfile.is_open())
         {
-        otaskfile<<task[i].getname()<<""<<endl;
-        otaskfile<< task[i].getdescription()<<""<<endl;
-        otaskfile<< task[i].getdue()<<""<<endl;
-        otaskfile<<task[i].getstatus() << "" <<endl;
-        otaskfile<<user[i].getuser()<<""<<endl;
+        otaskfile<<task[total].getname()<<""<<endl;
+        otaskfile<< task[total].getdescription()<<""<<endl;
+        otaskfile<< task[total].getdue()<<""<<endl;
+        otaskfile<<task[total].getstatus() << "" <<endl;
+        otaskfile<<task[total].getuser()<<""<<endl;
         otaskfile.close();
         }
         else
@@ -342,27 +357,4 @@ if (x==3){
 
 return 0;
   
-}
-//This is currently a test function
-void save()
-{
-remove("t.txt");
-for(int i{1};i<=total;i++)
-  {
-otaskfile.open("t.txt",ios::app);
-if(otaskfile.is_open())
-    {
- otaskfile<<task[i].getname()<<""<<endl;
- otaskfile<< task[i].getdescription()<<""<<endl;
- otaskfile<< task[i].getdue()<<""<<endl;
- otaskfile<<task[i].getstatus() << "" <<endl;
- otaskfile<<user[i].getuser()<<""<<endl;
-otaskfile.close();
-    }
-  
-    else
-    {
-      cout<< "bad"<<endl;
-    }
-  }
 }
